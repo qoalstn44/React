@@ -1,12 +1,14 @@
 // src/App.js
 import React from "react";
 
-function Child() {
-  return <div>Child</div>;
+function Child(posts) {
+  console.log(posts);
+  return <div>{posts.MotherName}</div>; //props를 받아서 출력
 }
 
 function Mother() {
-  return <Child />;
+  const name = "박성현";
+  return <Child MotherName={name} />; //MotherName이라는 props를 만들어서 name을 넣어줌
 }
 
 function GrandFather() {
