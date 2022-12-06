@@ -1,26 +1,12 @@
 // src/App.js
 import React from "react";
 
-function Child(posts) {
-  return (
-    <div>
-      <h3>할머니 이름: {posts.GrandFatherName}</h3>
-    </div>
-  );
-}
-
-function Mother(props) {
-  console.log(props);
-  return <Child GrandFatherName={props.GrandFatherName} />;
-}
-
-function GrandFather() {
-  const name = "할머니";
-  return <Mother GrandFatherName={name} />;
+function User(props) {
+  return <div>{props.children}</div>;
 }
 
 function App() {
-  return <GrandFather />;
+  return <User>안녕하세요</User>;
 }
 
 export default App;
