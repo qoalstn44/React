@@ -2,17 +2,21 @@
 import React from "react";
 
 function Child(posts) {
-  console.log(posts);
-  return <div>{posts.MotherName}</div>; //props를 받아서 출력
+  return (
+    <div>
+      <h3>할머니 이름: {posts.GrandFatherName}</h3>
+    </div>
+  );
 }
 
-function Mother() {
-  const name = "박성현";
-  return <Child MotherName={name} />; //MotherName이라는 props를 만들어서 name을 넣어줌
+function Mother(props) {
+  console.log(props);
+  return <Child GrandFatherName={props.GrandFatherName} />;
 }
 
 function GrandFather() {
-  return <Mother />;
+  const name = "할머니";
+  return <Mother GrandFatherName={name} />;
 }
 
 function App() {
