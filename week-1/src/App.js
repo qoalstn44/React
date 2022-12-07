@@ -1,18 +1,18 @@
 // src/App.js
 
-import React from "react";
+import React, { useState } from "react";
 
-function App() {
-  function onClick() {
-    setName("이몽룡");
-  }
-  const [name, setName] = React.useState("홍길동");
+const App = () => {
+  const [value, setValue] = useState("초기값");
+  const onChange = (e) => {
+    const inputValue = e.target.value;
+    setValue(inputValue);
+  };
   return (
     <div>
-      {name}
-      <button onClick={onClick}>버튼</button>
+      <input type="tsxt" onChange={onChange} value={value} />
     </div>
   );
-}
+};
 
 export default App;
