@@ -1,65 +1,29 @@
-/* eslint-disavle */
-import React,{ useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css"; // 🔥 반드시 App.css 파일을 import 해줘야 합니다.
 
-function App() {
-
-  
-  let [글제목, 글제목변경] = useState(['남자 코트 추천','남자 바지 추천','남자 맨투맨 추천']);
-  let [추천, 추천변경] = useState(0);
-  let posts = '강남고기맛집';
-
- // function 제목바꾸기(){
-//    var newArray = [...글제목];
- //   newArray[0] = '여자코트 추천';
- //   글제목변경( newArray );
-//  }
-
+//  User 컴포넌트를 분리해서 구현
+function User(props) {
   return (
-    <div className="App">
-      <div className="black-nav">
-        <biv>개발 Blog</biv>
-
-
-
-      </div>
-
-      <div className='list'>
-        <h3>{ 글제목[0] } <span onClick={ ()=>{ 추천변경 (추천 + 1) }}>👍</span> {추천} </h3>
-        <p>6월 08일 발행</p>
-        <hr/>
-      </div>
-      <div className='list'>
-        <h3>{ 글제목[1] }</h3>
-        <p>6월 09일 발행</p>
-        <hr/>
-      </div>
-      <div className='list'>
-        <h3>{ 글제목[2] }</h3>
-        <p>6월 10일 발행</p>
-        <hr/>
-      </div>
-      
-      <div className="modal">
-        <h2>제목</h2>
-        <p>날짜</p>
-        <p>상세내용</p>        
-      </div>
-
-
-      
+    <div className="square-Style">
+      {props.user.age}살 - {props.user.name}
     </div>
   );
 }
 
-function Modal(){
+const App = () => {
+  const users = [
+    { id: 1, age: 30, name: "송중기" },
+    { id: 2, age: 24, name: "송강" },
+    { id: 3, age: 21, name: "김유정" },
+    { id: 4, age: 29, name: "구교환" },
+  ];
   return (
-    <div className="modal">
-    <h2>제목</h2>
-    <p>날짜</p>
-    <p>상세내용</p>        
-  </div>
-  )
-}
+    <div className="app-style">
+      {users.map((user) => {
+        return <User user={user} key={user.id} />;
+      })}
+    </div>
+  );
+};
+
 export default App;
