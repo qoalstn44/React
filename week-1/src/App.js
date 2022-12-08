@@ -1,18 +1,26 @@
-// src/App.js
-
 import React, { useState } from "react";
 
-const App = () => {
-  const [value, setValue] = useState("초기값");
-  const onChange = (e) => {
-    const inputValue = e.target.value;
-    setValue(inputValue);
-  };
+function App() {
+  const [number, setNumber] = React.useState(0);
   return (
     <div>
-      <input type="tsxt" onChange={onChange} value={value} />
+      {number}
+      <button
+        onClick={() => {
+          setNumber(number + 1);
+        }}
+      >
+        +
+      </button>
+      <button
+        onClick={() => {
+          setNumber(number - 1);
+        }}
+      >
+        -
+      </button>
     </div>
   );
-};
+}
 
 export default App;
