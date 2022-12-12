@@ -1,27 +1,36 @@
+// src/App.js
+
 import React from "react";
-import "./App.css"; // 🔥 반드시 App.css 파일을 import 해줘야 합니다.
+import styled from "styled-components";
 
-//  User 컴포넌트를 분리해서 구현
-function User(props) {
-  return (
-    <div className="square-Style">
-      {props.user.age}살 - {props.user.name}
-    </div>
-  );
-}
+// 1. styled-components를 만들었습니다.
+const StBox = styled.div`
+  width: 100px;
+  height: 100px;
+  border: 1px solid ${(props) => props.borderColor}; // 4.부모 컴포넌트에서 보낸 props를 받아 사용합니다.
+  margin: 20px;
+`;
+const boxList = ["red", "green", "blue"];
 
+// 색을 넣으면, 이름을 반환해주는 함수를 만듭니다.
+const getBoxName = (color) => {
+  switch (color) {
+    case "red":
+      return "빨간 박스";
+    case "green":
+      return "초록 박스";
+    case "blue":
+      return "파란 박스";
+    default:
+      return "검정 박스";
+  }
+};
 const App = () => {
-  const users = [
-    { id: 1, age: 30, name: "송중기" },
-    { id: 2, age: 24, name: "송강" },
-    { id: 3, age: 21, name: "김유정" },
-    { id: 4, age: 29, name: "구교환" },
-  ];
   return (
-    <div className="app-style">
-      {users.map((user) => {
-        return <User user={user} key={user.id} />;
-      })}
+    <div>
+      {boxList.map((box) => (
+        <StBox borderColor={box}>{getBoxName(box)}</StBox>
+      ))}
     </div>
   );
 };
