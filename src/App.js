@@ -63,6 +63,10 @@ export default function FunctionComponent() {
 
   useEffect(() => {
     console.log("컴포넌트가 마운트 되었습니다.");
+
+    return () => {
+      // code...
+    };
   }, [color]);
 
   return (
