@@ -48,6 +48,7 @@
 
 //export default App;
 import { useState, useEffect } from "react";
+import "./App.css";
 
 export default function FunctionComponent() {
   const [color, setColor] = useState();
@@ -72,14 +73,22 @@ export default function FunctionComponent() {
           height: "100px",
           margin: "auto",
           backgroundColor: color,
-          border: "1px solid #ccc",
+          border: "solid 1px black",
         }}
       ></div>
       <div>
-        <button onClick={() => changeColor("red")}>빨간색</button>
-        <button onClick={() => changeColor("blue")}>파란색</button>
-        <button onClick={() => changeColor("green")}>초록색</button>
-        <button onClick={() => changeColor("black")}>검은색</button>
+        <button className="button" onClick={() => changeColor("red")}>
+          빨간색
+        </button>
+        <button className="button" onClick={() => changeColor("blue")}>
+          파란색
+        </button>
+        <button className="button" onClick={() => changeColor("green")}>
+          초록색
+        </button>
+        <button className="button" onClick={() => changeColor("black")}>
+          검은색
+        </button>
       </div>
     </div>
   );
