@@ -47,53 +47,50 @@
 //};
 
 //export default App;
-import { useState, useEffect } from "react";
-import "./App.css";
+// import { Editor } from "@toast-ui/react-editor";
+// import "@toast-ui/editor/dist/toastui-editor.css";
 
-export default function FunctionComponent() {
-  const [color, setColor] = useState();
+// export default function ToastEditor() {
+//   return (
+//     <div>
+//       <h3>### Editor Toast</h3>
+//       <Editor
+//         placeholder="내용을 입력해주세요."
+//         previewStyle="vertical" // 미리보기 스타일 지정
+//         height="300px" // 에디터 창 높이
+//         initialEditType="wysiwyg" // 초기 입력모드 설정(디폴트 markdown)
+//         toolbarItems={[
+//           // 툴바 옵션 설정
+//           ["heading", "bold", "italic", "strike"],
+//           ["hr", "quote"],
+//           ["ul", "ol", "task", "indent", "outdent"],
+//           ["table", "image", "link"],
+//           ["code", "codeblock"],
+//         ]}
+//       ></Editor>
+//     </div>
+//   );
+// }
 
-  const changeColor = (color) => {
-    setColor(color);
+import { useInput } from "./useInput";
+
+function App() {
+  const { inportValue, handleChnage } = useInput("나는 커스텀 훅입니다.");
+  const { inportValue2, handleChage2 } =
+    useInput("나는 두번째 커스텀 훅입니다.");
+
+  const handleInport = () => {
+    alert(inportValue);
+    // setInportValue("");
   };
-
-  useEffect(() => {
-    console.log("컴포넌트가 마운트 되었습니다.");
-  }, []);
-
-  useEffect(() => {
-    console.log("컴포넌트가 마운트 되었습니다.");
-
-    return () => {
-      // code...
-    };
-  }, [color]);
-
   return (
     <div>
-      <div
-        style={{
-          width: "200px",
-          height: "100px",
-          margin: "auto",
-          backgroundColor: color,
-          border: "solid 1px black",
-        }}
-      ></div>
-      <div>
-        <button className="button" onClick={() => changeColor("red")}>
-          빨간색
-        </button>
-        <button className="button" onClick={() => changeColor("blue")}>
-          파란색
-        </button>
-        <button className="button" onClick={() => changeColor("green")}>
-          초록색
-        </button>
-        <button className="button" onClick={() => changeColor("black")}>
-          검은색
-        </button>
-      </div>
+      <h1>useInput</h1>
+      <input type="text" value={inportValue} onChange={handleChnage} />
+      <input type="text" value={inportValue2} onChange={handleChage2} />
+      <button onClick={handleInport}>입력</button>
     </div>
   );
 }
+
+export default App;
